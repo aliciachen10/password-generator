@@ -14,7 +14,7 @@ function generatePassword() {
 
   var passwordLength = window.prompt("how long do you want your password to be?");
 
-  //FINISH WRITING THIS LOOP FOR 8-128 CHARACTERS 
+  //if the user doesn't select a password length between 8-128 characters, tell them to re-select an appropriate length
   if (passwordLength < 8 || passwordLength > 128) {
     window.confirm("please enter a number between 8 and 128")
     return generatePassword();
@@ -24,51 +24,38 @@ function generatePassword() {
   var specialPrompt = window.confirm("would you like any special characters?");
   var numberPrompt = window.confirm("would you like any numbers?");
 
-  //empty passwordArray for user
-  // var promptArray = {lowerPrompt: lowercase, upperPrompt: uppercase, specialPrompt: special, numberPrompt: number};
-
   var charactersUserWants = [];
-  var finalPasswordArray = [];
-
-  // if (prompt == true) {
-  //   var charactersUserWants = passwordArray.concat(promptArray.prompt);
-  // };
-  
+  var finalPasswordArray = []; 
   var addedChars = 0;
+
+  // if user doesn't select any of the character types, tell them to choose at least one
+  if (!lowerPrompt && !upperPrompt && !specialPrompt && !numberPrompt) {
+    window.confirm("please choose at least one character type")
+    return generatePassword();
+  }
   //TURN THE BELOW INTO A LOOP
   if (lowerPrompt) {
     charactersUserWants = charactersUserWants.concat(lowercase);
     finalPasswordArray.push(lowercase[Math.floor(Math.random()*lowercase.length)]);
     addedChars ++;
-    console.log(">>>lower password array>>>" + finalPasswordArray)
-  // } else {
-  //   charactersUserWants = charactersUserWants
   };
+
   if (upperPrompt) {
     charactersUserWants = charactersUserWants.concat(uppercase);
     finalPasswordArray.push(uppercase[Math.floor(Math.random()*uppercase.length)]);
     addedChars ++;
-    console.log(">>>upper password array>>>" + finalPasswordArray)
-  // } else {
-  //   charactersUserWants = charactersUserWants
   };
 
   if (specialPrompt) {
     charactersUserWants = charactersUserWants.concat(special);
     finalPasswordArray.push(special[Math.floor(Math.random()*special.length)]);
     addedChars ++;
-    console.log(">>>special password array>>>" + finalPasswordArray)
-  // } else {
-  //   charactersUserWants = charactersUserWants
   };
 
   if (numberPrompt) {
     charactersUserWants = charactersUserWants.concat(number);
     finalPasswordArray.push(number[Math.floor(Math.random()*number.length)]);
     addedChars ++;
-    console.log(">>>number password array>>>" + finalPasswordArray)
-  // } else {
-  //   charactersUserWants = charactersUserWants
   };
 
   for (let i = 0; i < (passwordLength - addedChars); i++) {
@@ -94,10 +81,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-// var loggedPassword = generatePassword();
-// console.log(loggedPassword);
-
-// console.log(generatePassword());
-///to dos
-///if cancel all cohices asks user to do again?
-///insert first 4 - MUST be one of each type if user selected
