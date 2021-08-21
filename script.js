@@ -28,46 +28,58 @@ function generatePassword() {
   // var promptArray = {lowerPrompt: lowercase, upperPrompt: uppercase, specialPrompt: special, numberPrompt: number};
 
   var charactersUserWants = [];
+  var finalPasswordArray = [];
 
   // if (prompt == true) {
   //   var charactersUserWants = passwordArray.concat(promptArray.prompt);
   // };
   
+  var addedChars = 0;
   //TURN THE BELOW INTO A LOOP
   if (lowerPrompt) {
-    charactersUserWants = charactersUserWants.concat(lowercase)
+    charactersUserWants = charactersUserWants.concat(lowercase);
+    finalPasswordArray.push(lowercase[Math.floor(Math.random()*lowercase.length)]);
+    addedChars ++;
+    console.log(">>>lower password array>>>" + finalPasswordArray)
   // } else {
   //   charactersUserWants = charactersUserWants
   };
   if (upperPrompt) {
-    charactersUserWants = charactersUserWants.concat(uppercase)
+    charactersUserWants = charactersUserWants.concat(uppercase);
+    finalPasswordArray.push(uppercase[Math.floor(Math.random()*uppercase.length)]);
+    addedChars ++;
+    console.log(">>>upper password array>>>" + finalPasswordArray)
   // } else {
   //   charactersUserWants = charactersUserWants
   };
 
   if (specialPrompt) {
-    charactersUserWants = charactersUserWants.concat(special)
+    charactersUserWants = charactersUserWants.concat(special);
+    finalPasswordArray.push(special[Math.floor(Math.random()*special.length)]);
+    addedChars ++;
+    console.log(">>>special password array>>>" + finalPasswordArray)
   // } else {
   //   charactersUserWants = charactersUserWants
   };
 
   if (numberPrompt) {
-    charactersUserWants = charactersUserWants.concat(number)
+    charactersUserWants = charactersUserWants.concat(number);
+    finalPasswordArray.push(number[Math.floor(Math.random()*number.length)]);
+    addedChars ++;
+    console.log(">>>number password array>>>" + finalPasswordArray)
   // } else {
   //   charactersUserWants = charactersUserWants
   };
 
-  var finalPasswordArray = [];
-
-  for (let i = 0; i < passwordLength; i++) {
-    finalPasswordArray.push(charactersUserWants[Math.floor(Math.random()*charactersUserWants.length-1)]);
+  for (let i = 0; i < (passwordLength - addedChars); i++) {
+    finalPasswordArray.push(charactersUserWants[Math.floor(Math.random()*charactersUserWants.length)]);
   };
 
   var finalPassword = finalPasswordArray.join("");
 
   };
 
-  console.log(typeof finalPassword);
+  console.log(addedChars);
   return finalPassword;
 };
 
