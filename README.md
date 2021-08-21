@@ -16,4 +16,4 @@ This website was created using Javascript using window functions.
 
 A mock-up of the website is below 
 
-![demo](03-javascript-homework-demo.png)
+![demo](assets/mockup.png)
